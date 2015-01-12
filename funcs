@@ -1,0 +1,6 @@
+#!/bin/bash
+MOUNTPOINT="/mnt"
+
+  arch_chroot() { #{{{
+    arch-chroot $MOUNTPOINT /bin/bash -c "${1}"
+  } 
