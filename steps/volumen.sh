@@ -4,7 +4,7 @@
 lvm pvcreate /dev/mapper/enc-lvm
 lvm vgcreate vg /dev/mapper/enc-lvm
 lvm lvcreate -L 88G -n root vg
-lvm lvcreate -C y -r n -L 12G -n swap vg
+lvm lvcreate -C y -L 12G -n swap vg
 lvm lvcreate -l 100%FREE -n home vg
  
 sync
