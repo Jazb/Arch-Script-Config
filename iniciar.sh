@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR=`pwad`
+DIR=`pwd`
 
 if [[ -z $DIR ]]
 then
