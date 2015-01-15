@@ -4,3 +4,13 @@ MOUNTPOINT="/mnt"
   arch_chroot() { #{{{
     arch-chroot $MOUNTPOINT /bin/bash -c "${1}"
   } 
+  add_repository() { #{{{
+    local _repo=${1}
+    local _url=${2}
+    [[ -n ${3} ]] && local _siglevel="\nSigLevel = ${3}" || local _siglevel=""
+
+    local _check_repo=`grep -F "${_repo}" /etc/pacman.conf`
+    if [[ -z $_check_repo ]]; then
+      echo -e "\n[${_repo}]${_siglevel}\nServer = ${_url}" >> /etc/pacman.conf
+      system_update
+    fi
